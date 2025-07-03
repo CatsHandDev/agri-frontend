@@ -139,7 +139,7 @@ export default function HomePage() {
 
   return (
     <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-      {isAuthenticated ? (
+      {/* {isAuthenticated ? ( */}
         <Box sx={{ bgcolor: '#F7F3E8', minHeight: '100vh' }}>
           {/* Mobile Drawer */}
           <Drawer anchor='left' open={drawerOpen} onClose={toggleDrawer(false)}>
@@ -416,9 +416,9 @@ export default function HomePage() {
             </Container>
           </main>
         </Box>
-      ) : (
-        // --- 未ログイン時の表示 ---
-        <Box sx={{ textAlign: 'center', mt: 4 }}>
+      {/* ) : ( */}
+        {/* // --- 未ログイン時の表示 --- */}
+        {/* <Box sx={{ textAlign: 'center', mt: 4 }}>
           <Typography variant='body1' color='text.secondary' sx={{ mb: 4 }}>
             ゲストログインID： guest
             <br />
@@ -428,16 +428,12 @@ export default function HomePage() {
             <Button component={Link} href='/login' variant='contained' size='large'>
               ログイン
             </Button>
-            {/* 新規登録ボタン */}
             <Button component={Link} href='/register' variant='outlined' size='large'>
               新規登録
             </Button>
           </Stack>
-          {/* <Button component={Link} href='/' variant='text' size='large'>
-            ⇒ ログインなしで商品を見る
-          </Button> */}
-        </Box>
-      )}
+        </Box> */}
+      {/* )} */}
     </Container>
   )
 }

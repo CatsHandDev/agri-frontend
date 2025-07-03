@@ -107,7 +107,7 @@ export default function LoginPage() {
   return (
     <Container component="main" maxWidth="xs" sx={{ mt: 8, mb: 4 }}>
       <Paper elevation={3} sx={{ p: { xs: 2, sm: 4 }, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Suspense fallback={<div>Loading form...</div>}> {/* ★ フォールバックUI */}
+        <Suspense fallback={<div>Loading form...</div>}>
           <LoginFormContent />
         </Suspense>
       </Paper>
