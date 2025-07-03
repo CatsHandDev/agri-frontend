@@ -1,26 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
   images: {
-    unoptimized: true,
-    // remotePatterns: [
-    //   {
-    //     protocol: 'http', // または 'https'
-    //     hostname: 'localhost',
-    //     port: '8000', // Django サーバーのポート
-    //     pathname: '/media/**', // /media/ 以下のすべてのパスを許可
-    //   },
-    //   // 必要であれば他の許可するホストも追加
-    //   // 例: 本番環境のメディアサーバーのホスト名など
-    //   // {
-    //   //   protocol: 'https',
-    //   //   hostname: 'your-production-media.com',
-    //   //   port: '', // ポートがなければ空文字
-    //   //   pathname: '/media/**',
-    //   // },
-    // ],
+    // unoptimized: true, // 開発環境でのみ使う場合は削除 (本番では最適化したい)
+    remotePatterns: [
+      // ローカル開発用
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '/media/**',
+      },
+      // Render デプロイ用
+      {
+        protocol: 'https', // Render は HTTPS を提供
+        hostname: process.env.NEXT_PUBLIC_DJANGO_MEDIA_URL,
+        port: '', // HTTPS のデフォルトポートなので空文字
+        pathname: '/media/**',
+      },
+    ],
   },
 };
-
 export default nextConfig;

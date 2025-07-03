@@ -3,12 +3,17 @@ import { getDefaultStore } from 'jotai';
 import { accessTokenAtom, refreshTokenAtom, setTokensAtom, clearAuthDataAtom } from '@/atoms/authAtoms';
 
 const isServer = typeof window === 'undefined';
-const serverBaseURL = process.env.INTERNAL_API_URL || 'http://backend:8000/api';
-const clientBaseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
-const baseURL = isServer ? serverBaseURL : clientBaseURL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const DJANGO_MEDIA_URL = process.env.NEXT_PUBLIC_DJANGO_MEDIA_URL || 'http://localhost:8000';
+
+// 開発環境の Docker Compose 内部アクセス用URLは、デプロイ時には使わない
+// const serverBaseURL = process.env.INTERNAL_API_URL || 'http://backend:8000/api';
+
+// デプロイ後は serverBaseURL と clientBaseURL は同じ公開 URL を指す
+const baseURL = API_BASE_URL; // ★ シンプルに API_BASE_URL を使う
 
 console.log(`[axios] Environment: ${isServer ? 'Server' : 'Client'}`);
-console.log(`[axios] API Base URL: ${baseURL}`);
+console.log(`[axios] API Base URL used: ${baseURL}`);
 
 const apiClient = axios.create({
   baseURL: baseURL,
