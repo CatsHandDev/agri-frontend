@@ -14,7 +14,7 @@ const nextConfig = {
       // Render デプロイ用
       {
         protocol: 'https', // Render は HTTPS を提供
-        hostname: process.env.NEXT_PUBLIC_DJANGO_MEDIA_URL,
+        hostname: "https://agri-backend-fsry.onrender.com",
         port: '', // HTTPS のデフォルトポートなので空文字
         pathname: '/media/**',
       },
